@@ -44,10 +44,6 @@ jobs:
         ls -l
         go build
         ls -l
-#         make
-#          ls -l
-#         tar -czvf myetc.tar.gz bin
-#        make -f Makefile.cross-compiles
         mkdir -p /opt/images
         sudo mv -f /home/runner/go/src/github.com/fatedier/frp/myetc.tar.gz /opt/images/
     - name : Upload packages
