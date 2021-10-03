@@ -45,7 +45,7 @@ jobs:
         go build
         ls -l
         mkdir -p /opt/images
-        sudo mv -f /home/runner/go/src/github.com/fatedier/frp/myetc.tar.gz /opt/images/
+        sudo mv -f /home/runner/go/src/github.com/cdle/sillyGirl/sillyGirl /opt/images/
     - name : Upload packages
       uses: actions/upload-artifact@master
       if: always()
