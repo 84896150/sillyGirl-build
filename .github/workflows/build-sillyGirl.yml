@@ -43,6 +43,7 @@ jobs:
         cd /home/runner/go/src/github.com/cdle/sillyGirl
         ls -l
         go build
+        ls -l
 #         make
 #          ls -l
 #         tar -czvf myetc.tar.gz bin
