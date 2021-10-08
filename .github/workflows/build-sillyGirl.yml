@@ -32,12 +32,13 @@ jobs:
         sudo apt-get -y install bison ed gawk gcc libc6-dev make       
     - name: Clone source code
       run: |
-        git clone --depth=1 https://gitee.com/xiongchao/sillyGirl.git /home/runner/go/src/github.com/cdle/sillyGirl
+        git clone --depth=1 https://github.com/cdle/sillyGirl.git /home/runner/go/src/github.com/cdle/sillyGirl
     - name: Build Firmware
       run: |
         cd /home/runner/go/src/github.com/cdle/sillyGirl/develop
         git clone https://github.com/ufuckee/jd_cookie
         cd /home/runner/go/src/github.com/cdle/sillyGirl
+        cp $GITHUB_WORKSPACE/dev.go /home/runner/go/src/github.com/cdle/sillyGirl
         go build
         mkdir -p /opt/images
         sudo mv -f /home/runner/go/src/github.com/cdle/sillyGirl/sillyGirl /opt/images/
