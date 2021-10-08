@@ -37,10 +37,9 @@ jobs:
       run: |
         cd /home/runner/go/src/github.com/cdle/sillyGirl/develop
         git clone https://github.com/ufuckee/jd_cookie
-        cd /home/runner/go/src/github.com/cdle/sillyGirl
-        cat $GITHUB_WORKSPACE/dev.go
-
+        cp $GITHUB_WORKSPACE/dev.go /home/runner/go/src/github.com/cdle/sillyGirl/
         ls -l
+        cd /home/runner/go/src/github.com/cdle/sillyGirl
         go build
         mkdir -p /opt/images
         sudo mv -f /home/runner/go/src/github.com/cdle/sillyGirl/sillyGirl /opt/images/
