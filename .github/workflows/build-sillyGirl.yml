@@ -39,7 +39,6 @@ jobs:
         cd /home/runner/go/src/github.com/cdle/sillyGirl/develop
         git clone https://github.com/ufuckee/jd_cookie
         cd /home/runner/go/src/github.com/cdle/sillyGirl
-        ls -l
         go build
         mkdir -p /opt/images
         sudo mv -f /home/runner/go/src/github.com/cdle/sillyGirl/sillyGirl /opt/images/
