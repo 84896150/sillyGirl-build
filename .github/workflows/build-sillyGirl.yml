@@ -35,11 +35,11 @@ jobs:
         git clone --depth=1 https://github.com/cdle/sillyGirl.git /home/runner/go/src/github.com/cdle/sillyGirl
     - name: Build Firmware
       run: |
+        cp $GITHUB_WORKSPACE/dev.go /home/runner/go/src/github.com/cdle/sillyGirl/
         cd /home/runner/go/src/github.com/cdle/sillyGirl/develop
         git clone https://github.com/ufuckee/jd_cookie
-        cp $GITHUB_WORKSPACE/dev.go /home/runner/go/src/github.com/cdle/sillyGirl/
-        ls -l
         cd /home/runner/go/src/github.com/cdle/sillyGirl
+        ls -l
         go build
         mkdir -p /opt/images
         sudo mv -f /home/runner/go/src/github.com/cdle/sillyGirl/sillyGirl /opt/images/
