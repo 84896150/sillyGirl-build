@@ -37,7 +37,6 @@ jobs:
       run: |
         cd /home/runner/go/src/github.com/cdle/sillyGirl/develop
         ls -l
-#        git clone https://ghproxy.com/https://github.com/ufuckee/jd_cookie
         cd /home/runner/go/src/github.com/cdle/sillyGirl
         go build
         mkdir -p /opt/images
