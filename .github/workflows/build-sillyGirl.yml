@@ -35,7 +35,8 @@ jobs:
         git clone --depth=1 https://gitee.com/xiongchao/sillyGirl.git /home/runner/go/src/github.com/cdle/sillyGirl
     - name: Build Firmware
       run: |
-#        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop
+        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop
+        ls -l
 #        git clone https://ghproxy.com/https://github.com/ufuckee/jd_cookie
         cd /home/runner/go/src/github.com/cdle/sillyGirl
         go build
