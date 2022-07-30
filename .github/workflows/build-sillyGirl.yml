@@ -36,8 +36,8 @@ jobs:
     - name: Build Firmware
       run: |
         cp $GITHUB_WORKSPACE/dev.go /home/runner/go/src/github.com/cdle/sillyGirl/
-        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop
-        git clone https://github.com/ufuckee/jd_cookie
+        #cd /home/runner/go/src/github.com/cdle/sillyGirl/develop
+        #git clone https://github.com/ufuckee/jd_cookie
         cd /home/runner/go/src/github.com/cdle/sillyGirl
         go build
         mkdir -p /opt/images
