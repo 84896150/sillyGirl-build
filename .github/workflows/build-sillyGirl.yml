@@ -33,7 +33,7 @@ jobs:
       run:
         cd /home/runner/go/src/github.com/cdle/sillyGirl/
         mkdir develop
-        cd develop
+        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop
         git clone https://github.com/cdle/jd_price.git
         ls -l
     
