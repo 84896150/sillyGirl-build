@@ -28,6 +28,7 @@ jobs:
     - name: Git clone sillyGirl
       run:
         git clone https://github.com/cdle/sillyGirl.git /home/runner/go/src/github.com/cdle/sillyGirl
+        pwd
         cd /home/runner/go/src/github.com/cdle/sillyGirl/
     - name: Git clone cable
       run:
