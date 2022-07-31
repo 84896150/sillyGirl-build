@@ -36,10 +36,10 @@ jobs:
     - name: Build Firmware
       run: |
         cp $GITHUB_WORKSPACE/dev.go /home/runner/go/src/github.com/cdle/sillyGirl/
-        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop
-        mkdir jd_cookie
-        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop/jd_cookie
-        git clone https://gitee.com/quincy_Zhou/jd_cookie-ufuckee.git
+        #cd /home/runner/go/src/github.com/cdle/sillyGirl/develop
+        #mkdir jd_cookie
+        #cd /home/runner/go/src/github.com/cdle/sillyGirl/develop/jd_cookie
+        #git clone https://gitee.com/quincy_Zhou/jd_cookie-ufuckee.git
         cd /home/runner/go/src/github.com/cdle/sillyGirl
         go build
         mkdir -p /opt/images
