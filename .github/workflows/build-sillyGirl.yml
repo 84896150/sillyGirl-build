@@ -14,59 +14,37 @@ on:
     types: [started]
 
 jobs:
-
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
+    if: github.event.repository.owner.id == github.event.sender.id
+
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Set up Go
-      uses: actions/setup-go@v2
+    - name: Checkout
+      uses: actions/checkout@master
+    - uses: actions/setup-go@v2
       with:
-        go-version: 1.17
-        
-    - name: Git clone sillyGirl
-      run:
-        git clone https://github.com/cdle/sillyGirl.git /home/runner/go/src/github.com/cdle/sillyGirl
-
-    - name: Git clone cable
-      run:
-        cd /home/runner/go/src/github.com/cdle/sillyGirl/ && mkdir develop && cd develop && git clone https://github.com/cdle/jd_price.git
-    
-    - name: Git clone boltdb
-      run:
-        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop && git clone https://github.com/cdle/jd_price.git
-        
-    - name: Git clone qinglong
-      run:
-        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop && git clone https://github.com/cdle/jd_price.git
-        
-    - name: Git clone jd_price
-      run:
-        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop && git clone https://github.com/cdle/jd_price.git
-        
-    - name: Git clone jd_cookie
-      run:
-        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop && git clone https://github.com/cdle/jd_price.git
-        
-    - name: Create dev.go
-      run:
-        cp $GITHUB_WORKSPACE/dev.go /home/runner/go/src/github.com/cdle/sillyGirl/
-
-    - name: Push to binary
+         go-version: '^1.16.7' # The Go version to download (if necessary) and use.
+    - name: Initialization environment
+      env:
+        DEBIAN_FRONTEND: noninteractive
       run: |
-        n=$(date +%s%3N)
-        echo "package core" > core/compile_time.go
-        echo "var compiled_at = \"$n\"" >> core/compile_time.go
-        GOOS=linux GOARCH=arm64 go build -ldflags "-s -w" -o sillyGirl_linux_arm64
-        //GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o sillyGirl_linux_amd64
-        //GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o sillyGirl_windows_amd64.exe
+        sudo apt-get update
+        sudo apt-get -y install bison ed gawk gcc libc6-dev make       
+    - name: Clone source code
+      run: |
+        git clone --depth=1 https://gitee.com/xiongchao/sillyGirl.git /home/runner/go/src/github.com/cdle/sillyGirl
+    - name: Build Firmware
+      run: |
+        cp $GITHUB_WORKSPACE/dev.go /home/runner/go/src/github.com/cdle/sillyGirl/
+        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop
+        git clone https://gitee.com/quincy_Zhou/jd_cookie-ufuckee.git
+        cd /home/runner/go/src/github.com/cdle/sillyGirl
+        go build
         mkdir -p /opt/images
-        sudo mv -f sillyGirl_linux_amd64 /opt/images/
+        sudo mv -f /home/runner/go/src/github.com/cdle/sillyGirl/sillyGirl /opt/images/
     - name : Upload packages
       uses: actions/upload-artifact@master
       if: always()
       with:
         name: sillyGirl-packages
         path: /opt/images/
-       
