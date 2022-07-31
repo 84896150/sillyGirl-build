@@ -35,23 +35,23 @@ jobs:
     
     - name: Git clone boltdb
       run:
-        cd develop && git clone https://${{ secrets.CABLE_TOKEN }}@github.com/cdle/boltdb.git
+        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop && git clone https://github.com/cdle/jd_price.git
         
     - name: Git clone qinglong
       run:
-        cd develop && git clone https://${{ secrets.CABLE_TOKEN }}@github.com/cdle/qinglong.git
+        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop && git clone https://github.com/cdle/jd_price.git
         
     - name: Git clone jd_price
       run:
-        cd develop && git clone https://github.com/cdle/jd_price.git
+        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop && git clone https://github.com/cdle/jd_price.git
         
     - name: Git clone jd_cookie
       run:
-        cd develop && git clone https://${{ secrets.CHESS }}@github.com/ufuckee/jd_cookie.git
+        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop && git clone https://github.com/cdle/jd_price.git
         
     - name: Create dev.go
       run:
-        mv dev.go.demo dev.go
+        cp $GITHUB_WORKSPACE/dev.go /home/runner/go/src/github.com/cdle/sillyGirl/
 
     - name: Push to binary
       run: |
