@@ -31,11 +31,7 @@ jobs:
 
     - name: Git clone cable
       run:
-        cd /home/runner/go/src/github.com/cdle/sillyGirl/
-        mkdir develop
-        cd /home/runner/go/src/github.com/cdle/sillyGirl/develop
-        git clone https://github.com/cdle/jd_price.git
-        ls -l
+        cd /home/runner/go/src/github.com/cdle/sillyGirl/ && mkdir develop && cd develop && git clone https://github.com/cdle/jd_price.git
     
     - name: Git clone boltdb
       run:
